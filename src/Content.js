@@ -1,7 +1,7 @@
 import React from "react";
 
 export default function Content(props) {
-  const [allMemeImg, setAllMemeImg] = React.useState(props) ;
+  const [allMemeImg, setAllMemeImg] = React.useState(props);
   const [meme, setMeme] = React.useState({
     upperText: "",
     url: "https://i.imgflip.com/30b1gx.jpg",
@@ -11,29 +11,50 @@ export default function Content(props) {
   function getMemeImg() {
     const memesArray = allMemeImg.data.memes;
     const randNum = Math.floor(Math.random() * memesArray.length);
-    const url = memesArray[randNum].url
-    setMeme (prevState => ({ ...prevState,  upperText: "", randImgurl: url, lowerText: ""}));
+    const url = memesArray[randNum].url;
+
+    setMeme((prevState) => ({
+      ...prevState,
+      randImgurl: url,
+    }));
   }
-  function saveInputUpp(text) {
-    setMeme (prevState => ({ ...prevState,  upperText: text}));
+
+  const saveInputUpp = evt => {
+    setMeme((prevState) => {
+      return { ...prevState, upperText: evt.target.value };
+    });
+    console.log('value is:', evt.target.value);
   }
-  function saveInputLow(text) {
-    setMeme (prevState => ({ ...prevState,  lowerText: text}));
+
+  const saveInputLow = evt => {
+    setMeme((prevState) => {
+      return { ...prevState, lowerText: evt.target.value };
+    });
+    console.log('value is:', evt.target.value);
   }
+  console.log(meme);
+
+    
 
   return (
     <div className="content--container">
       <div className="input--container">
         <input
           type="text"
+          value={meme.upperText}
           placeholder="Upper Text"
-          onChange={(uppEvt) => saveInputUpp(uppEvt)}
-        >{meme.upperText}</input>
+          onChange={saveInputUpp}
+        >
+          {/* {meme.upperText} */}
+        </input>
         <input
           type="text"
+          value={meme.lowerText}
           placeholder="Bottom Text"
-          onChange={(lowEvt) => saveInputLow(lowEvt)}
-        >{meme.lowerText}</input>
+          onChange={saveInputLow}
+        >
+          {/* {meme.lowerText} */}
+        </input>
       </div>
       <div>
         <button onClick={getMemeImg}>Get a new meme image</button>
