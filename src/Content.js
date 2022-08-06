@@ -10,6 +10,12 @@ export default function Content(props) {
     setImage(memesArray[randNum].url)
   }
 
+  // const [arr, setArr] = React.useState(["thing 1", "thing 2"])
+  // const data = arr.map(item => <p>{item}</p>)
+  // function addNewThing(){
+  //   setArr(prevState => {return [...prevState, `Thing ${prevState.length + 1}`]}) 
+  // }
+
   return (
     <div className="content--container">
       <div className="input--container">
@@ -20,6 +26,7 @@ export default function Content(props) {
         <button onClick={getMemeImg} >Get a new meme image</button>
       </div>
       <div><img src={getImage} alt="" className="meme--image"></img></div>
+      {/* <div><button onClick={addNewThing}>Add New Thing</button>{data}</div> */}
     </div>
   );
 }
