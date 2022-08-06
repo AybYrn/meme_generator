@@ -1,32 +1,46 @@
-import React from "react";  
+import React from "react";
 
 export default function Content(props) {
-
-  const [getImage, setImage] = React.useState("")
+  const [allMemeImg, setAllMemeImg] = React.useState(props) ;
+  const [meme, setMeme] = React.useState({
+    upperText: "",
+    url: "https://i.imgflip.com/30b1gx.jpg",
+    lowerText: "",
+  });
 
   function getMemeImg() {
-    const memesArray = props.data.memes
+    const memesArray = allMemeImg.data.memes;
     const randNum = Math.floor(Math.random() * memesArray.length);
-    setImage(memesArray[randNum].url)
+    const url = memesArray[randNum].url
+    setMeme (prevState => ({ ...prevState,  upperText: "", randImgurl: url, lowerText: ""}));
   }
-
-  // const [arr, setArr] = React.useState(["thing 1", "thing 2"])
-  // const data = arr.map(item => <p>{item}</p>)
-  // function addNewThing(){
-  //   setArr(prevState => {return [...prevState, `Thing ${prevState.length + 1}`]}) 
-  // }
+  function saveInputUpp(text) {
+    setMeme (prevState => ({ ...prevState,  upperText: text}));
+  }
+  function saveInputLow(text) {
+    setMeme (prevState => ({ ...prevState,  lowerText: text}));
+  }
 
   return (
     <div className="content--container">
       <div className="input--container">
-        <input type="text" placeholder="Upper Text"></input>
-        <input type="text" placeholder="Bottom Text"></input>
+        <input
+          type="text"
+          placeholder="Upper Text"
+          onChange={(uppEvt) => saveInputUpp(uppEvt)}
+        >{meme.upperText}</input>
+        <input
+          type="text"
+          placeholder="Bottom Text"
+          onChange={(lowEvt) => saveInputLow(lowEvt)}
+        >{meme.lowerText}</input>
       </div>
       <div>
-        <button onClick={getMemeImg} >Get a new meme image</button>
+        <button onClick={getMemeImg}>Get a new meme image</button>
       </div>
-      <div><img src={getImage} alt="" className="meme--image"></img></div>
-      {/* <div><button onClick={addNewThing}>Add New Thing</button>{data}</div> */}
+      <div>
+        <img src={meme.randImgurl} alt="" className="meme--image"></img>
+      </div>
     </div>
   );
 }
