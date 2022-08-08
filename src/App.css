@@ -67,3 +67,28 @@ input{
   height: 268px;
   object-fit: contain;
 }
+
+.img--container{
+  position: relative;
+  text-align: center;
+  color: black;
+  -webkit-text-stroke: 1px rgb(255, 0, 0);
+  paint-order: stroke fill;
+  font-weight: 900;
+  font-size: 32px;
+  line-height: 39px;
+}
+
+.upper--text{
+  position: absolute;
+  top: 32px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.lower--text{
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

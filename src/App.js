@@ -5,7 +5,7 @@ import Data from './Data.js';
 
 
 export default function App() {
-  const data = Data.map(item => <Content {...item}/>)
+  const data = Data.map(item => <Content key={item.id} {...item}/>)
 
   return (
     <div className="container">
