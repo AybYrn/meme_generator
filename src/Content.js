@@ -19,36 +19,35 @@ export default function Content(props) {
     }));
   }
 
-  const saveInputUpp = (evt) => {
-    setMeme((prevState) => {
-      return { ...prevState, upperText: evt.target.value };
-    });
-    console.log("value is:", evt.target.value);
-  };
+  function handleInputChange(event) {
+    const target = event.target;
 
-  const saveInputLow = (evt) => {
-    setMeme((prevState) => {
-      return { ...prevState, lowerText: evt.target.value };
-    });
-    console.log("value is:", evt.target.value);
-  };
+    target.name === "upper_text"
+      ? setMeme((prevState) => {
+          return { ...prevState, upperText: target.value };
+        })
+      : setMeme((prevState) => {
+          return { ...prevState, lowerText: target.value };
+        });
+  }
   console.log(meme);
-  console.log(meme.upperText);
 
   return (
     <div className="content--container">
       <div className="input--container">
         <input
           type="text"
+          name="upper_text"
           value={meme.upperText}
           placeholder="Upper Text"
-          onChange={saveInputUpp}
+          onChange={handleInputChange}
         ></input>
         <input
           type="text"
+          name="lower_text"
           value={meme.lowerText}
           placeholder="Bottom Text"
-          onChange={saveInputLow}
+          onChange={handleInputChange}
         ></input>
       </div>
       <div>
