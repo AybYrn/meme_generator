@@ -21,14 +21,10 @@ export default function Content(props) {
 
   function handleInputChange(event) {
     const target = event.target;
-
-    target.name === "upper_text"
-      ? setMeme((prevState) => {
-          return { ...prevState, upperText: target.value };
-        })
-      : setMeme((prevState) => {
-          return { ...prevState, lowerText: target.value };
-        });
+    console.log("target :" + target.name + " value : " + target.value)
+    setMeme((prevState) => {
+      return { ...prevState, [target.name]: target.value };
+    });
   }
   console.log(meme);
 
@@ -37,14 +33,14 @@ export default function Content(props) {
       <div className="input--container">
         <input
           type="text"
-          name="upper_text"
+          name="upperText"
           value={meme.upperText}
           placeholder="Upper Text"
           onChange={handleInputChange}
         ></input>
         <input
           type="text"
-          name="lower_text"
+          name="lowerText"
           value={meme.lowerText}
           placeholder="Bottom Text"
           onChange={handleInputChange}
