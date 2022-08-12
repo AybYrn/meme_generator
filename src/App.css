@@ -1,10 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Karla:wght@200;400&display=swap');
-
 *{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Karla', sans-serif;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .container{
@@ -71,8 +69,8 @@ input{
 .img--container{
   position: relative;
   text-align: center;
-  color: black;
-  -webkit-text-stroke: 1px rgb(255, 0, 0);
+  color: white;
+  -webkit-text-stroke: 1px rgb(0, 0, 0);
   paint-order: stroke fill;
   font-weight: 900;
   font-size: 32px;
