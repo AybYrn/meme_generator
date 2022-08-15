@@ -8,6 +8,10 @@ export default function Content(props) {
     lowerText: "",
   });
 
+  React.useEffect(function(){
+    
+  })
+
   function getMemeImg() {
     const memesArray = allMemeImg.data.memes;
     const randNum = Math.floor(Math.random() * memesArray.length);
