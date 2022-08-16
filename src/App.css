@@ -64,6 +64,7 @@ input{
   width: 447px;
   height: 268px;
   object-fit: contain;
+  vertical-align:top;
 }
 
 .img--container{
@@ -79,14 +80,14 @@ input{
 
 .upper--text{
   position: absolute;
-  top: 32px;
+  top: 10%;
   left: 50%;
   transform: translate(-50%, -50%);
 }
 
 .lower--text{
   position: absolute;
-  bottom: 16px;
+  bottom: 0;
   left: 50%;
   transform: translate(-50%, -50%);
 }
